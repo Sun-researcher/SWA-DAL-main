@@ -253,7 +253,7 @@ class VisionTransformer(nn.Module):
             # idx = torch.arange(0, B // 2)
             if np.random.rand() > 0.5:
                 xm = x[B // 2:] + (x[idx] - x[B // 2:]).detach() * self.sr_alpha_adap
-           else:
+            else:
                 xm = x[B // 2:] + (x[idx] - x[B // 2:]).detach() *( 1-self.sr_alpha_adap)
             x = torch.cat((x, xm))
         # [B, C, H, W] -> [B, num_patches, embed_dim]
